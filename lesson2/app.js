@@ -26,6 +26,28 @@ app.set('views',(__dirname,'views'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
+
+var users= [
+	{
+	id: 1,
+	first_name:'john',
+	last_name:'Doe',
+	email: 'johndoe@gmail.com'
+	},
+	{
+	id: 2,
+	first_name:'Sarah',
+	last_name:'Smith',
+	email: 'sarahsmith@gmail.com'
+	},
+	{
+	id: 3,
+	first_name:'Bob',
+	last_name:'Builder',
+	email: 'BobBuilder@gmail.com'
+	}
+]
+
 //set static path
 //app.use(express.static(path.join(__dirname,'public')));
 
@@ -44,11 +66,27 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.get('/', function(req,res){
 	//res.send('hello');
 	//res.json(person);
-
 	res.render('index',{
-		title:'customers'
+		title:'customers',
+		users: users
 	});
 });
+
+
+app.post('/users/add', function(req,res){
+	var newUser = {
+		first_name: req.body.first_name,
+		last_name: req.body.last_name,
+		email: req.body.email
+	}
+
+	
+
+});
+
+
+
+
 
 app.listen(3000, function(){
 	console.log('Server started on port 3000...')

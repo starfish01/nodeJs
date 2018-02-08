@@ -11,6 +11,15 @@
 
 
 	<h1>Add Customer</h1>
+
+	<% if(errors){ %>
+		<ul>
+			<%errors.forEach(function(error){ %>
+			<li> <%= error.msg %></li>
+			<% }) %>
+		</ul>
+	<% } %>
+
 	<form method="Post" action="/users/add">
 		<label>First Name</label><br>
 		<input type="text" name="first_name">

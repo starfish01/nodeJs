@@ -27,6 +27,12 @@ app.set('views',(__dirname,'views'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
+//golbal vars
+app.use(function(req, res, next){
+	res.locals.errors =null;
+	next();
+});
+
 // Express validator middleware
 app.use(expressValidator({
 	errorFormatter: function(param, msg, value){
@@ -99,12 +105,16 @@ app.post('/users/add', function(req,res){
 	req.checkBody('last_name', 'Last Name is Required').notEmpty();
 	req.checkBody('email', 'Email is Required').notEmpty();
 
-	
+
 
 	var errors = req.validationErrors();
 
 	if(errors){
-		console.log('Errors');
+		res.render('index',{
+			title:'customers',
+			users: users,
+			errors: errors
+	});
 	}else{
 		var newUser = {
 		first_name: req.body.first_name,

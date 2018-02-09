@@ -23,6 +23,7 @@ app.set('views',(__dirname,'views'));
 
 
 
+
 //Body Parser Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));

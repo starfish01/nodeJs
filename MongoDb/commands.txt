@@ -1,0 +1,105 @@
+db.createUser({
+    user:"Patrick",
+    pwd:"7107",
+    roles: [ "readWrite", "dbAdmin" ] 
+       
+    
+});
+
+//creates the collection
+db.createCollection("customers");
+
+//shows collections
+show collections
+
+//insert data to document
+db.customers.insert({
+    first_name:"John",
+    last_name:"Doe"
+});
+
+//see document in a collection
+db.customers.find();
+// makes data neat
+db.customers.find().pretty();
+
+
+//we dont need to worry about id its sorted for you
+
+//adding more then one 
+db.customers.insert([
+    {
+        first_name:"John",
+        last_name:"Doe"
+    },
+    {
+        first_name:"betty",
+        last_name:"white"
+    },
+    {
+        first_name:"jayz",
+        last_name:"z"
+    },
+    {
+        first_name:"kanye",
+        last_name:"west",
+        gender:"male"
+    }
+]);
+
+//update existing items have to readd all files
+db.customers.update(
+    {first_name:"John"},
+    {first_name:"John", last_name:"Doe", gender:"male"}    
+);
+
+//update existing item with specific update
+db.customers.update(
+    {first_name:"betty"},
+    {$set:{gender:"female"}}
+);
+
+//increment
+//need to add age field to be incremented
+db.customers.update(
+    {first_name:"betty"},
+    {$set:{age:50}}
+);
+
+db.customers.update(
+    {first_name:"betty"},
+    {$inc:{age:5}}
+);
+
+//remove a field (removes gender)
+db.customers.update(
+    {first_name:"John"},
+    {$unset:{gender:1}}
+);
+
+//if not in db add to db
+db.customers.update(
+    {first_name:"Marry"},
+    {first_name:"Marry", last_name:"Johnson"},
+    {upsert: true}
+);
+
+//rename fields
+db.customers.update(
+    {first_name:"kanye"},
+    {$rename:{"gender":"sex"}}
+);
+
+//removes customer
+db.customers.remove(
+    {first_name:"jayz"}
+);
+
+//print names
+db.customers.find().forEach(function(doc)
+    {print(
+    "Customer Name "+doc.first_name
+    )}
+);
+
+

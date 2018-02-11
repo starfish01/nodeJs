@@ -1,0 +1,5 @@
+db.users.insert([
+    {first_name:'John' , last_name:'Doe', email:'jdoe@yahoo.com'},
+    {first_name:'Beth' , last_name:'Smith', email:'bethsmith@yahoo.com'},
+    {first_name:'Kevin' , last_name:'Johnson', email:'jboy@yahoo.com'}
+]);

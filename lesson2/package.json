@@ -10,7 +10,9 @@
     "body-parser": "*",
     "ejs": "^2.5.7",
     "express": "*",
-    "express-validator": "^4.3.0"
+    "express-validator": "^4.3.0",
+    "mongodb": "^3.0.2",
+    "mongojs": "^2.5.0"
   },
   "author": "",
   "license": "ISC"

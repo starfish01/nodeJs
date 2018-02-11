@@ -2,7 +2,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
 var expressValidator = require('express-validator');
-
+var mongojs = require('mongojs');
+var db = mongojs('customerapp', ['users']);
 
 var app = express();
 
@@ -91,12 +92,19 @@ var users= [
 ]*/
 
 app.get('/', function(req,res){
+	db.users.find(function (err, docs) {
+	// docs is an array of all the documents in mycollection
+		console.log(docs);
+		res.render('index',{
+			title:'customers',
+			users: users
+	});
+
+	})
+
 	//res.send('hello');
 	//res.json(person);
-	res.render('index',{
-		title:'customers',
-		users: users
-	});
+	
 });
 
 

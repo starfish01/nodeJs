@@ -55,7 +55,7 @@ app.use(expressValidator({
 
 
 
-var users= [
+/* var users= [
 	{
 	id: 1,
 	first_name:'john',
@@ -74,7 +74,7 @@ var users= [
 	last_name:'Builder',
 	email: 'BobBuilder@gmail.com'
 	}
-]
+] */
 
 //set static path
 //app.use(express.static(path.join(__dirname,'public')));
@@ -94,10 +94,10 @@ var users= [
 app.get('/', function(req,res){
 	db.users.find(function (err, docs) {
 	// docs is an array of all the documents in mycollection
-		console.log(docs);
+		//console.log(docs);
 		res.render('index',{
 			title:'customers',
-			users: users
+			users: docs
 	});
 
 	})
@@ -130,6 +130,14 @@ app.post('/users/add', function(req,res){
 		last_name: req.body.last_name,
 		email: req.body.email
 	}
+
+	db.users.insert(newUser,function(err, result){
+		if(err){
+			console.log(err)
+		}
+		res.redirect('/');
+
+	});
 	console.log('Object Created...');
 
 

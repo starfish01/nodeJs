@@ -124,13 +124,16 @@ app.post('/users/add', function(req,res){
 		res.render('index',{
 			title:'customers',
 			users: users,
-			errors: errors
-	});
-	}else{
+			errors: errors,
+			
+	})
+	}
+	else{
 		var newUser = {
 		first_name: req.body.first_name,
 		last_name: req.body.last_name,
 		email: req.body.email
+
 	}
 
 	db.users.insert(newUser,function(err, result){
@@ -141,14 +144,9 @@ app.post('/users/add', function(req,res){
 
 	});
 	console.log('Object Created...');
-
-
-	}
-
 	
 
-
-
+	}
 });
 
 

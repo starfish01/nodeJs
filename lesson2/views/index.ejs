@@ -1,26 +1,10 @@
 <% include partials/header %>
+
+<div class='container'>
 	<h1><%= title %></h1>
 
 
-	<ul>
-		<% users.forEach(function(user){ %>
-			<li><%= user.first_name %> 
-				<%= user.last_name %>
-				<a href="#" class="delete" data-id="<%= user._id %>">Delete</a>
-			</li>
-		<% }) %>
-	</ul>
-
-
 	<h1>Add Customer</h1>
-
-	<% if(errors){ %>
-		<ul>
-			<%errors.forEach(function(error){ %>
-			<li> <%= error.msg %></li>
-			<% }) %>
-		</ul>
-	<% } %>
 
 	<form method="Post" action="/users/add">
 		<label>First Name</label><br>
@@ -32,11 +16,40 @@
 		<label>Email</label><br>
 		<input type="text" name="email">
 		<br><br>
-		<input type="submit" value="submit">
+		<input type="submit" value="submit" class="btn btn-primary  active">
 		
 	</form>
 
 
+	<% if(errors){ %>
+		<ul >
+			<%errors.forEach(function(error){ %>
+			<li> <%= error.msg %></li>
+			<% }) %>
+		</ul>
+	<% } %>
+
+	
+	<ul style="list-style: none; padding: 50px 0">
+			<% users.forEach(function(user){ %>
+				<div class="card" style="padding:10px 10px; margin:10px; ">
+				<li><div class="card-block"><%= user.first_name %> 
+					<%= user.last_name %>
+					<span style="float:right"><a href="#" class="delete" data-id="<%= user._id %>"><i class="fas fa-eraser"></i></a></span>
+				</div></li>
+			</div>
+			<% }) %>
+		</ul>
+	
+
+<div class="card">
+		<blockquote class="card-blockquote">hello world</blockquote>	
+</div>
+		
+	
+		
+
+	</div>
 
 
 <% include partials/footer %>

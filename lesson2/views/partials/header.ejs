@@ -4,6 +4,34 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>My express app</title>
-	<link rel="stylesheet" href="">
+	<script
+  src="http://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+	
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script>
+		$(document).ready(function(){
+			$('.delete').on('click',deleteUser);
+		});
+	
+		function deleteUser(){
+			var confirmation =confirm('Are you sure?');
+			
+			if(confirmation){
+				$.ajax({
+					type: 'DELETE',
+					url: '/users/delete/' + $(this).data('id')
+				}).done(function(response){
+					window.location.replace('/');
+				});
+				window.location.replace('/');
+			}else{
+				return false;
+			}
+
+		}
+
+	</script>
 </head>
 <body>

@@ -1,6 +1,12 @@
 
 
 $(function(){
+    getAjax();
+
+});
+
+// gets data 
+function getAjax(){
     $.ajax({
         type: 'GET',
         url:'/api/orders.json',
@@ -8,17 +14,19 @@ $(function(){
             //console.log('success',data);
             // now we are going to print out to an li function
             ajaxPrint(data);
-
-           
+        },
+        error: function () {
+          alert('Error loading orders');  
         }
     });
+}
 
-});
+//posts data
+
+
 
 function ajaxPrint(data){
-
     var $orders = $('#orders');
-
     $.each(data, function(i,item) {
         $orders.append('<li>Name: '+item.name +', Drink: '+item.drink +'</li>');
     });

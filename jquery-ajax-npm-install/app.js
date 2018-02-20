@@ -25,18 +25,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 
-app.post('/api/orders.json', function(req, res){
-   var name = req.body.name;
-   var drink = req.body.drink;
+// //pretty sure this is not exactly correct
+// app.post('/api/orders.json', function(req, res){
+//    var name = req.body.name;
+//    var drink = req.body.drink;
 
-   var order = {
-     "name": name,
-     "drink": drink
-   }
-   res.send(order);
+//    var order = {
+//      "name": name,
+//      "drink": drink
+//    }
+//    res.send(order);
 
-   console.log(order);
-});
+//    console.log(order);
+// });
 
 
 

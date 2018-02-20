@@ -30,7 +30,7 @@ var $drink = $('#drink');
     $('#add-order').on('click', function(){
         var order = {
            name: $name.val(),
-           drink: $drink.val(),
+           drink: $drink.val()
         };
         $.ajax({
             type: 'POST',

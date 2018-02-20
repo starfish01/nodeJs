@@ -2,6 +2,7 @@
 
 $(function(){
     getAjax();
+    ajaxAdd();
 
 });
 
@@ -22,6 +23,29 @@ function getAjax(){
 }
 
 //posts data
+function ajaxAdd(){
+    var $name = $('#name');
+var $drink = $('#drink');
+    
+    $('#add-order').on('click', function(){
+        var order = {
+           name: $name.val(),
+           drink: $drink.val()
+        };
+        $.ajax({
+            type: 'POST',
+            url:'/api/neworders.json',
+            data: order,
+            success: function(newOrder){
+                $orders.append('<li>Name: '+newOrder.name +', Drink: '+newOrder.drink +'</li>');
+            },
+            error: function(){
+                alert('error saving order');
+            }
+        });
+
+    });
+};
 
 
 

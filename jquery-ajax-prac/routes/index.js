@@ -10,8 +10,23 @@ router.get('/', function(req, res, next) {
   });
 });
 
-router.post('/users',function(req,res){
-  alert(1);
+router.post('/form',function(req, res){
+	res.setHeader('Content-Type', 'application/json');
+  console.log('hello world');
+  //mimic a slow network connection
+	setTimeout(function(){
+
+		res.send(JSON.stringify({
+			name: req.body.personsName || null,
+			drink: req.body.PersonsDrink || null
+		}));
+
+  }, 1000)
+  
+  
+
+	//debugging output for the terminal
+	console.log('you posted: First Name: ' + req.body.personsName + ', Last Name: ' + req.body.personsDrink);
 });
 
 module.exports = router;

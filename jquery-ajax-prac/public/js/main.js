@@ -6,7 +6,17 @@ $(function() {
 function submitButton(){
     var data = 'click';
     $('#formSubmit').click(function(){
-        
+        $.ajax({
+            url: '/form',
+            type: 'POST',
+            data: {
+                name: orderForm.personsName.value,
+                drink: orderForm.personsDrink.value
+            },
+            success: function(){
+                alert('post');
+            }
+        })
     });
 }
 

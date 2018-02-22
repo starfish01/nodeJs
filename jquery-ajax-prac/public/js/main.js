@@ -1,21 +1,26 @@
 $(function() {
     populateData();
+    submitButton();
 });
+
+function submitButton(){
+    var data = 'click';
+    $('#formSubmit').click(function(){
+        
+    });
+}
 
 function populateData(){
     $.ajax({
         url: "/json/data.json",
         success:function(result){
-            $('#orderList').append("<li class='list-group-item'>"+result[0].name + "</li>");
-           // alert(result[0].name);
-
-           $.each(result, function() {
-               $.each(this, function (name, value){
-                $('#orderList').append("<li class='list-group-item'>"+result[value].name + "</li>");
-               })
-           });
-
-
+            filldata(result);
         }
     });
+};
+
+function filldata(result){
+    $.each(result, function(i, order) {
+        $('#orderList').append("<li class='list-group-item'>"+order.name + " - "+order.drink+"</li>");
+       })
 };

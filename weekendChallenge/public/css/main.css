@@ -1,0 +1,13 @@
+@media(max-width:544px) {
+    #nav3.navbar .navbar-brand {
+        float:none;
+        display: block;
+    }
+    #nav3.navbar .navbar-nav>.nav-item {
+        float: none;
+        margin-left: .1rem;
+    }
+    #nav3.navbar .navbar-nav {
+        float:none !important;
+    }
+}

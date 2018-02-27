@@ -10,14 +10,17 @@ function callForJson(){
         url:"/JSON/data.json",
         success: function(result){
             fillDataFromJson(result);
+            
             jsonData = result;
         }
     })
 }
 
 function fillDataFromJson(result){
+    $('#listOfOrders').empty();
 
     $.each(result, function(i, item){
+        //console.log(item.Drink)
         $('#listOfOrders').append("<li class='list-group-item'>Drink: "+item.Drink+" Order Name: "+item.Name + "</li>");
     });
 
@@ -38,10 +41,8 @@ function submitButtonPressed(evt){
         url: '/',
         type: 'POST',
         data:{
-            //Name: oderForm.name.value,
             Drink: oderForm.drink.value,
             Name: oderForm.name.value            
-            
         },
         success: function(data){
            // jsonData.prop = data; 
@@ -49,9 +50,9 @@ function submitButtonPressed(evt){
             //jsonData += data;
             //alert(data);
             //alert(jsonData);
-            jsonData.push(data);
-            fillDataFromJson(jsonData);
-
+            //jsonData.push(data);
+            //fillDataFromJson(jsonData);
+            callForJson();
         }
         
     })

@@ -47,8 +47,11 @@ function submitButtonPressed(evt){
            // jsonData.prop = data; 
             //$.extend(true, data, jsonData);
             //jsonData += data;
-            //alert(data.Name);
-            alert(jsonData);
+            //alert(data);
+            //alert(jsonData);
+            jsonData.push(data);
+            fillDataFromJson(jsonData);
+
         }
         
     })

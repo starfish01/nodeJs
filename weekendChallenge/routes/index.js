@@ -7,8 +7,8 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req,res){
-  res.send(req.body.Drink);
-  
+  //res.send(req.body.Drink);
+  res.json({"Name": req.body.Name, "Drink":req.body.Drink});
 });
 
 

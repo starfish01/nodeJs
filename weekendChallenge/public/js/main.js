@@ -3,9 +3,6 @@ var jsonData;
 $(function () {
     callForJson();
     initButton();
-
-
-
 });
 
 function callForJson(){
@@ -35,16 +32,22 @@ function submitButtonPressed(evt){
     evt.preventDefault();
     evt.stopPropagation();
 
+    //alert(oderForm.name.value);
+
     $.ajax({
         url: '/',
         type: 'POST',
         data:{
-            Name: oderForm.name.value,
-            Drink: oderForm.drink.value
+            //Name: oderForm.name.value,
+            Drink: oderForm.drink.value,
+            Name: oderForm.name.value            
+            
         },
         success: function(data){
-            jsonData += data;
-            alert(data);
+           // jsonData.prop = data; 
+            //$.extend(true, data, jsonData);
+            //jsonData += data;
+            //alert(data.Name);
             alert(jsonData);
         }
         

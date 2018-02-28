@@ -45,13 +45,7 @@ function submitButtonPressed(evt){
             Name: oderForm.name.value            
         },
         success: function(data){
-           // jsonData.prop = data; 
-            //$.extend(true, data, jsonData);
-            //jsonData += data;
-            //alert(data);
-            //alert(jsonData);
-            //jsonData.push(data);
-            //fillDataFromJson(jsonData);
+
             callForJson();
         }
         

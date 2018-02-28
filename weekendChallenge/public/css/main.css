@@ -11,3 +11,8 @@
         float:none !important;
     }
 }
+
+
+li span{
+    float: right;
+}

@@ -21,7 +21,7 @@ function fillDataFromJson(result){
 
     $.each(result, function(i, item){
         //console.log(item.Drink)
-        $('#listOfOrders').append("<li class='list-group-item'>Drink: "+item.Drink+" Order Name: "+item.Name + "</li>");
+        $('#listOfOrders').append("<li class='list-group-item'>Drink: "+item.Drink+" Order Name: "+item.Name + "<span><a href='#'>X</a></span></li>");
     });
 
 }
